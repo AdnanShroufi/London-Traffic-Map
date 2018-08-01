@@ -1,4 +1,4 @@
-# LONDON TRAFFIC ACCIDENTS 2016-----------------------------------------------------------------------------
+# LONDON TRAFFIC ACCIDENTS 2016---------------------------------------------------------
 
 # INSTALL NECESSARY PACKAGES
 
@@ -18,17 +18,17 @@ library(RColorBrewer)
 library(shinydashboard)
 
 
-# SET WORKING DIRECTORY AND IMPORT DATA-----------------------------------------------------------------------
+# SET WORKING DIRECTORY AND IMPORT DATA------------------------------------------------
 
 
-setwd("/Users/adnanshroufi/Desktop/Data Viz/AdnanVisualisationTool/")
+setwd("/Users/adnanshroufi/Desktop/")
 
 rawData <- read.csv("dftRoadSafety_Accidents_2016.csv",
                     stringsAsFactors = TRUE,
                     header = TRUE)
 
 
-# DATA CLEANING AND FACTOR SETTING---------------------------------------------------------------------------
+# DATA CLEANING AND FACTOR SETTING-----------------------------------------------------
 
 rawData2 = rawData %>%
   filter(Police_Force == 1 | Police_Force == 2 | Police_Force == 48)
@@ -75,7 +75,8 @@ rawData2$Speed_limit = factor(rawData2$Speed_limit,
 
 rawData2 = rawData2 %>%
   filter(Speed_limit != "NULL") %>%
-  select(Longitude, Latitude, Accident_Severity, Number_of_Vehicles, Number_of_Casualties,Date, Time, Day_of_Week, Speed_limit, Timestamp)
+  select(Longitude, Latitude, Accident_Severity, Number_of_Vehicles,
+         Number_of_Casualties,Date, Time, Day_of_Week, Speed_limit, Timestamp)
 
 
 # FILTER NUMBER OF CASUALTIES SO MAX = 10
@@ -92,12 +93,11 @@ pal <- colorNumeric(
   domain = rev(rawData2$Number_of_Casualties))
 
 
-# END OF DATA PROCESSING #########################################################################
-##################################################################################################
-##################################################################################################
-##################################################################################################
-##################################################################################################
-##################################################################################################
+
+
+# END OF DATA PROCESSING #############################################################
+######################################################################################
+######################################################################################
 
 
 
